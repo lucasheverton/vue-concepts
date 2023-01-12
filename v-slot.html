@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-slot</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="slot">
+    <text-component>
+      <template v-slot:header>
+        <h2>Esse é o cabeçalho</h2>
+      </template>
+      Lucas Heverton
+    </text-component>
+
+    <text-component>
+      Stephen Curry
+    </text-component>
+
+    <text-component>
+      Lionel Messi
+    </text-component>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+    Vue.component('text-component', {
+      template: `
+        <div>
+          <header>
+            <slot name="header"></slot>
+          </header>
+
+          <p>
+            <slot></slot>
+          </p>
+        </div>
+      `
+    })
+
+    let app = new Vue({
+      el: '#slot',
+      data: {
+      },
+
+      created() {
+        console.info("%cSlot serve para trabalharmos com conteúdo de componentes", "color: red; background-color: #000")
+        console.info("%cPodemos usar o v-slot de dois modos, 'v-slot:' e '#' exemplo:", "color: red; background-color: #000")
+        console.info("%cv-slot:test ou simplismente #test", "color: #fff; background-color: #000")
+        console.info("%cpodemos nomear os slots com a propriedade name", "color: #fff; background-color: #000")
+      },
+    })
+  </script>
+
+</body>
+
+</html>

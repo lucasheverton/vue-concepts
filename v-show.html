@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-show</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="show">
+    <button @click="isLogged = !isLogged">{{ isLogged}}</button>
+
+    <h1 v-show="isLogged"><strong>v-show</strong>Seja bem-vindo(a) ao nosso site</h1>
+    <h1 v-if="isLogged"><strong>v-if</strong>Seja bem-vindo(a) ao nosso site</h1>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#show',
+      data: {
+        isLogged: true
+      },
+
+      watch: {
+        isLogged() {
+          console.info("A diferença entre o v-if e o v-show")
+          console.info("O v-show apenas oculta da tela, (display none)")
+          console.info("O v-if remove o elemento da DOM")
+        }
+      }
+
+    })
+  </script>
+
+</body>
+
+</html>

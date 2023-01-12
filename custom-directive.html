@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretivas Customizadas</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="custom-directive">
+    <h3 v-lower>Lucas HEVERTON</h3>
+    <h3>LUCAS HEVERTON</h3>
+    <h3 v-capitalize>Lorem ipsum dolor, sit amet</h3>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+    // diretiva global
+    Vue.directive('lower', {
+      inserted(element) {
+        element.innerText = element.innerText.toLowerCase()
+      }
+    })
+
+    let app = new Vue({
+      el: '#custom-directive',
+      data: {
+      },
+      // diretiva local
+      directives: {
+        capitalize(element) {
+          let words = element.innerText.split(' ')
+          words.forEach((text, index) => {
+            words[index] = text.charAt(0).toUpperCase() + text.slice(1)
+          });
+
+          element.innerText = words.join(' ')
+        }
+      },
+
+      created() {
+        console.info("%cCriando diretivas personalizadas.", "color: red; background-color: #000")
+      }
+    })
+  </script>
+
+</body>
+
+</html>

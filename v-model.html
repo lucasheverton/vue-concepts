@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-model</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="model">
+    <div v-if="!!isVisible">
+      <h3 :style="{ color: textColor, border: border, fontSize: fontSize + 'px', padding: padding + 'px', textAlign: 'center' } ">
+        Vue JS - Fundamentos
+      </h3>
+    </div>
+
+    <div>
+      <label title="Em inglês ou hexadecimal !!!">Digite a cor</label>
+      <input type="text" v-model="textColor">
+    </div>
+
+    <br />
+
+    <div>
+      <label title="Em pixels !!!">Digite o tamanho da fonte</label>
+      <input type="text" v-model="fontSize">
+    </div>
+
+    <br />
+
+    <div>
+      <label title="Em pixels !!!">Digite o tamanho do padding</label>
+      <input type="text" v-model="padding">
+    </div>
+
+    <br />
+
+    <div>
+      <label>Mostrar se é visível ou não</label>
+      <input type="checkbox" v-model="isVisible">
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#model',
+      data: {
+        textColor: 'red',
+        border: '2px solid darkblue',
+        fontSize: 18,
+        padding: 2,
+        isVisible: true
+      },
+
+      created() {
+        console.info("Realiza uma ligação de dados bidirecional")
+        console.info("O Two-way data binding")
+        console.info("Muito usado em, inputs, selects e textarea")
+      },
+    })
+  </script>
+
+</body>
+
+</html>

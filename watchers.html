@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watchers - Observadores</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="watchers">
+    <input type="text" v-model="country">
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#watchers',
+      data: {
+        country: 'Brazil'
+      },
+
+      watch: {
+        country(newValue, oldValue) {
+          console.log(`Novo Valor: ${newValue} | Valor Antigo: ${oldValue}`)
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

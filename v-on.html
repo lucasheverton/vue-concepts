@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-on</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+
+    h2, h3 {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="on">
+    <h2 @dblclick="reverseMessage()">{{ message }}</h2>
+
+    <h3 @[eventname]="printMessage()">{{ newMessage }}</h3>
+
+    <hr>
+
+    <input type="text" placeholder="Filtrar pessoas" @keyup="filterPeople">
+
+    <ul>
+      <li v-for="person in peopleFiltered">
+        {{ person }}
+      </li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#on',
+      data: {
+        message: 'O VueJs é reativo !!!',
+        newMessage: 'O VueJs possui diversas ferramentas',
+        eventname: 'mouseenter',
+        people: ['Lucas Heverton', 'Neymar Junior', 'Stephen Curry', 'Lebron James', 'Lionel Messi'],
+        peopleFiltered: []
+      },
+
+      methods: {
+        reverseMessage () {
+          return this.message = this.message.split('').reverse().join('')
+        },
+
+        printMessage() {
+          console.log(this.newMessage)
+        },
+
+        filterPeople(event) {
+          this.peopleFiltered = this.people.filter((name) => {
+            return name.toUpperCase().includes(event.target.value.toUpperCase())
+          })
+        }
+      },
+
+      created() {
+        this.peopleFiltered = this.people
+
+        console.info("%cPodemos usar o v-on de dois modos, 'v-on:' e '@' exemplo:", "color: red; background-color: #000")
+        console.info("%cv-on:click='' ou simplismente @dblclick=''", "color: #fff; background-color: #000")
+      },
+    })
+  </script>
+
+</body>
+
+</html>

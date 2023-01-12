@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-bind</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="bind">
+    <h2>Acesse o site abaixo</h2>
+    <a href="https://www.google.com/" target="_blank">Google</a>
+    <a :href="url" target="_blank">Github</a>
+
+    <div>
+      <p :[arg]="message">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#bind',
+      data: {
+        url: 'https://github.com/',
+        arg: 'title',
+        message: 'Isso é um parágrafo'
+      },
+
+      created() {
+        console.info("Podemos usar o bind de dois modos, exemplo:")
+        console.info("v-bind:title='' ou simplismente :title=''")
+      },
+    })
+  </script>
+
+</body>
+
+</html>

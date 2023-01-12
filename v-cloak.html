@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diretiva: v-pre</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cloak">
+    <h3 v-cloak>{{ name }}</h3>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js"></script>
+
+  <script>
+    setTimeout(() => {
+      let app = new Vue({
+        el: '#cloak',
+        data: {
+          name: 'Stephen Curry'
+        },
+
+        created() {
+          console.info("%cO v-cloak serve para que o elemento só seja carregado quando a instância vue for completamente carregada.", "color: red; background-color: #000")
+        }
+      })
+    }, 1500)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Binding - Passagem de dados</title>
+
+  <style>
+    * {
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="data-binding">
+    <h1 :title="brandName">
+      {{ message }}
+    </h1>
+
+    <h2>
+      {{ message.toUpperCase() }}
+    </h2>
+
+
+    <p>Meu nome é {{ person.name }} e eu tenho {{ person.age }} anos de idade.</p>
+
+    <span v-html="tag"></span>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6"></script>
+
+  <script>
+
+    let app = new Vue({
+      el: '#data-binding',
+      data: {
+        message: 'Marcas Famosas',
+        person: {
+          name: 'Lucas',
+          age: '21',
+        },
+        brandName: 'Nike',
+        tag: '<button>Clique Aqui!</button>'
+      }
+    })
+  </script>
+
+</body>
+
+</html>
